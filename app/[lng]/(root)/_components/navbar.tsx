@@ -18,9 +18,13 @@ import {
 import UserBox from '@/components/shared/user-box'
 import useTranslate from '@/hooks/use-translate'
 import Mobile from './mobile'
+import { useParams, usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 function Navbar() {
 	const t = useTranslate()
+	const pathname = usePathname()
+	const {lng} = useParams()
 
 	return (
 		<div className='fixed inset-0 z-40 h-20 bg-background/70 backdrop-blur-xl'>
@@ -32,7 +36,9 @@ function Navbar() {
 							<Link
 								href={`/${nav.route}`}
 								key={nav.route}
-								className='font-medium transition-all hover:text-blue-500 hover:underline'
+								className={cn('font-medium transition-all hover:text-blue-500 hover:underline',
+									pathname === `/${lng}/${nav.route}` && 'text-blue-500'
+								)}
 							>
 								{t(nav.name)}
 							</Link>
