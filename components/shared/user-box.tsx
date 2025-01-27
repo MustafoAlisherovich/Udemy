@@ -1,13 +1,19 @@
 'use client'
 
 import { SignOutButton, useUser } from '@clerk/nextjs'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from '../ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import Link from 'next/link'
 import useTranslate from '@/hooks/use-translate'
 
 function UserBox() {
-	const {user} = useUser()
+	const { user } = useUser()
 	const t = useTranslate()
 
 	return (
@@ -36,23 +42,30 @@ function UserBox() {
 						</div>
 
 						<div className='space-y-1'>
-							<p className='line-clamp-1 text-sm font-space-grotesk'>{user?.fullName}</p>
+							<p className='line-clamp-1 text-sm font-space-grotesk'>
+								{user?.fullName}
+							</p>
 						</div>
 					</div>
 				</div>
 
 				<DropdownMenuSeparator />
+				<Link href={'/instructor'}>
+					<DropdownMenuItem className='w-full cursor-pointer text-muted-foreground'>
+						Instructor
+					</DropdownMenuItem>
+				</Link>
 				<Link href={'/user-profile'}>
 					<DropdownMenuItem className='w-full cursor-pointer text-muted-foreground'>
 						{t('manageAccount')}
 					</DropdownMenuItem>
-					<DropdownMenuItem
-						asChild
-						className='w-full cursor-pointer text-muted-foreground'
-					>
-						<SignOutButton>{t('logout')}</SignOutButton>
-					</DropdownMenuItem>
 				</Link>
+				<DropdownMenuItem
+					asChild
+					className='w-full cursor-pointer text-muted-foreground'
+				>
+					<SignOutButton>{t('logout')}</SignOutButton>
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)
