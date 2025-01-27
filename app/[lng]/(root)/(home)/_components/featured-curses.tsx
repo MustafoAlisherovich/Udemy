@@ -67,7 +67,7 @@ function FeaturedCourses() {
 					))}
 				</CarouselContent>
 				<CarouselPrevious />
-				<CarouselNext />
+				<CarouselNext /> 
 			</Carousel>
 		</div>
 	)
