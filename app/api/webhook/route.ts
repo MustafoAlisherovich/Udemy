@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { createUser, updateUser } from '@/actions/user.action'
 import { WebhookEvent } from '@clerk/nextjs/server'
 import { headers } from 'next/headers'
@@ -9,14 +10,14 @@ export async function POST(req: Request) {
 
 	if (!WEBHOOK_SECRET) {
 		throw new Error(
-			'Please add WEBHOOK_SECRET from Clerk Dashboard to .env.local'
+			'Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local'
 		)
 	}
 
 	const headerPayload = headers()
-	const svixId = headerPayload.get('svix_id')
-	const svixTimestamp = headerPayload.get('svix_timestamp')
-	const svixSignature = headerPayload.get('svix_signature')
+	const svixId = headerPayload.get('svix-id')
+	const svixTimestamp = headerPayload.get('svix-timestamp')
+	const svixSignature = headerPayload.get('svix-signature')
 
 	if (!svixId || !svixTimestamp || !svixSignature) {
 		return new Response('Error occured -- no svix headers', {
@@ -38,8 +39,8 @@ export async function POST(req: Request) {
 			'svix-signature': svixSignature,
 		}) as WebhookEvent
 	} catch (err) {
-		console.error('Error: Could not verify webhook:', err)
-		return new Response('Error: Verification error', {
+		console.error('Error verifying webhook:', err)
+		return new Response('Error occured', {
 			status: 400,
 		})
 	}
@@ -56,7 +57,7 @@ export async function POST(req: Request) {
 			picture: image_url,
 		})
 
-		return NextResponse.json({ message: 'OK', user: user })
+		return NextResponse.json({ message: 'OK', user })
 	}
 
 	if (eventType === 'user.updated') {
@@ -71,6 +72,6 @@ export async function POST(req: Request) {
 			},
 		})
 
-		return NextResponse.json({ message: 'OK', user: user })
+		return NextResponse.json({ message: 'OK', user })
 	}
 }

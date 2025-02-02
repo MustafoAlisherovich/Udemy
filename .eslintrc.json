@@ -1,4 +1,5 @@
 {
+	"plugins": ["tailwindcss"],
 	"extends": [
 		"next/core-web-vitals",
 		"standard",
@@ -6,6 +7,8 @@
 		"prettier"
 	],
 	"rules": {
-		"no-use-before-define": "off"
+		"no-use-before-define": "off",
+		"tailwindcss/classnames-order": "off",
+		"tailwindcss/no-custom-classname": "off"
 	}
 }
