@@ -7,7 +7,7 @@ const CourseSchema = new Schema(
 		learning: String,
 		requirements: String,
 		level: String,
-		cateogry: String,
+		category: String,
 		language: String,
 		oldPrice: Number,
 		currentPrice: Number,

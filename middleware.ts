@@ -8,9 +8,6 @@ const intlMiddleware = createMiddleware({
 
 export default authMiddleware({
   beforeAuth: (req) => {
-    if (req.nextUrl.pathname.startsWith("/api")) {
-      return;
-    }
     return intlMiddleware(req);
   },
   publicRoutes: [
@@ -24,5 +21,5 @@ export default authMiddleware({
 });
 
 export const config = {
-  matcher: ["/((?!api|_next|static|public|favicon.ico).*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };

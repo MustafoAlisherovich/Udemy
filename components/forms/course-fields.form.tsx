@@ -32,9 +32,7 @@ import { useRouter } from 'next/navigation'
 import { useUploadThing } from '@/lib/uploadthing'
 import {
 	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTrigger,
+	DialogContent
 } from '../ui/dialog'
 
 function CourseFieldsForm() {
@@ -337,20 +335,18 @@ function CourseFieldsForm() {
 					<div className='flex justify-end gap-4'>
 						<Button
 							type='button'
-							size={'lg'}
 							variant={'destructive'}
 							onClick={() => form.reset()}
 							disabled={isLoading}
 						>
 							Clear
 						</Button>
-						<Button type='submit' size={'lg'} disabled={isLoading}>
+						<Button type='submit' disabled={isLoading}>
 							Submit
 						</Button>
 						{previewImage && (
 							<Button
 								type='button'
-								size={'lg'}
 								variant={'outline'}
 								onClick={() => setOpen(true)}
 							>
