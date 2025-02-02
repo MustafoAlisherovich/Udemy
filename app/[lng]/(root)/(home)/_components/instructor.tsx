@@ -1,6 +1,6 @@
 'use client'
 
-import InstructorCard from '@/components/cards/instructor-card'
+import InstructorCard from '@/components/cards/instructor.card'
 import { Button } from '@/components/ui/button'
 import { instructors } from '@/constants'
 import useTranslate from '@/hooks/use-translate'
@@ -31,8 +31,8 @@ function Instructor() {
 			</div>
 
 			<div className='mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
-				{instructors.map(instructor => (
-					<InstructorCard key={instructor.name} {...instructor} />
+				{instructors.map(item => (
+					<InstructorCard key={item.name} {...item} />
 				))}
 			</div>
 

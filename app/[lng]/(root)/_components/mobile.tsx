@@ -1,3 +1,5 @@
+'use client'
+
 import LanguageDropdown from '@/components/shared/language-dropdown'
 import Logo from '@/components/shared/logo'
 import { Button } from '@/components/ui/button'
@@ -12,7 +14,6 @@ import { navLinks } from '@/constants'
 import useTranslate from '@/hooks/use-translate'
 import { AlignCenter, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 import GlobalSearch from './global-search'
 import ModeToggle from '@/components/shared/mode-toggle'
 
@@ -36,11 +37,10 @@ function Mobile() {
 						<Link
 							href={`/${nav.route}`}
 							key={nav.route}
-							className='flex h-12 cursor-pointer items-center gap-2 rounded-sm px-3 transition-colors
-							hover:bg-blue-400/20'
+							className='flex h-12 cursor-pointer items-center gap-2 rounded-sm px-3 transition-colors hover:bg-blue-400/20'
 						>
 							<nav.icon className='size-5' />
-							{t(nav.name)}
+							<span>{t(nav.name)}</span>
 						</Link>
 					))}
 					<LanguageDropdown isMobile />

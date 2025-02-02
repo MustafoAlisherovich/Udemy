@@ -1,13 +1,16 @@
-import StatisticsCard from '@/components/cards/statistics-card'
+import StatisticsCard from '@/components/cards/statistics.card'
 import Header from '../_components/header'
 import { MonitorPlay } from 'lucide-react'
 import { PiStudent } from 'react-icons/pi'
 import { GrMoney } from 'react-icons/gr'
 import { courses } from '@/constants'
-import InstructorCourseCard from '@/components/cards/instructor-course-card'
-import ReviewCard from '@/components/cards/review-card'
+import InstructorCourseCard from '@/components/cards/instructor-course.card'
+import ReviewCard from '@/components/cards/review.card'
+import { getCourses } from '@/actions/course.action'
 
-function Page() {
+async function Page() {
+	const courses = await getCourses()
+
 	return (
 		<>
 			<Header title='Dashboard' description='Welcome to your dashboard' />
@@ -22,12 +25,17 @@ function Page() {
 				<StatisticsCard label='Total Sales' value='$190.00' Icon={GrMoney} />
 			</div>
 
-			<Header title='Latest courses' description='Here are your latest courses' />
+			<Header
+				title='Latest courses'
+				description='Here are your latest courses'
+			/>
 
 			<div className='mt-4 grid grid-cols-3 gap-4'>
-				{courses.map(course => (
-					<InstructorCourseCard key={course.title} {...course} />
-				)).slice(0, 3)}
+				{courses
+					.map(courses => (
+						<InstructorCourseCard key={courses._id} course={JSON.parse(JSON.stringify(courses))} />
+					))
+					.slice(0, 3)}
 			</div>
 
 			<Header title='Reviews' description='Here are your latest reviews' />

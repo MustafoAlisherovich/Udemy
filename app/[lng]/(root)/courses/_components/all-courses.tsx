@@ -1,6 +1,6 @@
 'use client'
 
-import CourseCard from '@/components/cards/course-card'
+import CourseCard from '@/components/cards/course.card'
 import {
 	Select,
 	SelectContent,

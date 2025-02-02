@@ -1,5 +1,5 @@
 {
-"navLink1": "Bosh sahifa",
+	"navLink1": "Bosh sahifa",
 	"navLink2": "Kurslar",
 	"navLink3": "Bloglar",
 	"navLink4": "Aloqa",
@@ -84,5 +84,6 @@
 	"minutes": "daqiqa",
 	"numberOfModules": "Modullar soni",
 	"numberOfLessons": "Darslar soni",
-	"courseDuration": "Kurs davomiyligi"
+	"courseDuration": "Kurs davomiyligi",
+	"youMayLike": "Sizga Yoqishi mumkin"
 }

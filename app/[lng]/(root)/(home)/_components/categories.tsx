@@ -1,6 +1,6 @@
 'use client'
 
-import CategoryCard from '@/components/cards/category-card'
+import CategoryCard from '@/components/cards/category.card'
 import { categories } from '@/constants'
 import useTranslate from '@/hooks/use-translate'
 
@@ -18,7 +18,7 @@ function Categories() {
 				</p>
 			</div>
 
-			<div className='grid gird-cols-1 mt-6 gap-4 md:grid-cols-2 lg:grid-cols-4'>
+			<div className='mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
 				{categories.map(category => (
 					<CategoryCard key={category.label} {...category} />
 				))}

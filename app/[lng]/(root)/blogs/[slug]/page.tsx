@@ -3,9 +3,9 @@ import { getDetailedBlog } from '@/service/blogs.service'
 import { format } from 'date-fns'
 import { CalendarDays, Clock, Minus } from 'lucide-react'
 import Image from 'next/image'
+import ShareBtns from './_components/share-btns'
 import parse from 'html-react-parser'
 import { Separator } from '@/components/ui/separator'
-import ShareBtns from './_components/share-btns'
 
 async function Page({ params }: { params: { slug: string } }) {
 	const blog = await getDetailedBlog(params.slug)

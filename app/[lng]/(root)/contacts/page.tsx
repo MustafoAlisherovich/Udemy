@@ -1,4 +1,4 @@
-import ContactForm from '@/components/forms/contact-form'
+import ContactForm from '@/components/forms/contact.form'
 import TopBar from '@/components/shared/top-bar'
 import { translation } from '@/i18n/server'
 import { LngParams } from '@/types'
@@ -11,9 +11,9 @@ async function Page({ params: { lng } }: LngParams) {
 		<>
 			<TopBar label='contacts' />
 			<iframe
-				src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10499.031609049764!2d70.931315496364!3d40.530074166429785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38baee945e333c8f%3A0xdbb4218e631b6996!2sKokand%20Pedagogical%20Institute!5e0!3m2!1sen!2s!4v1737911848003!5m2!1sen!2s'
+				src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13862.031135909749!2d31.37855353790335!3d30.050683721199444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583db8b5b45af3%3A0xc70430c3420bd837!2sEl%20Mahallawy%20Hypermarket!5e0!3m2!1sru!2seg!4v1708407922577!5m2!1sru!2seg'
 				loading='lazy'
-				className='w-full h-96 '
+				className='h-96 w-full'
 			/>
 
 			<div className='container mx-auto max-w-6xl'>
@@ -35,6 +35,7 @@ async function Page({ params: { lng } }: LngParams) {
 							<p className='text-sm'>+98 02 296 4902</p>
 						</div>
 					</div>
+
 					<div>
 						<h1 className='mb-2 font-space-grotesk text-4xl font-bold'>
 							{t('contactForm')}

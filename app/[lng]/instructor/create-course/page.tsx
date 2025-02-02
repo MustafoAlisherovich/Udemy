@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/separator'
 import Header from '../_components/header'
-import CourseFieldsForm from '@/components/forms/course-fields-form'
+import CourseFieldsForm from '@/components/forms/course-fields.form'
 
 function Page() {
 	return (
@@ -15,7 +15,7 @@ function Page() {
 					Basic information
 				</h3>
 				<Separator className='my-3' />
-				<CourseFieldsForm/>
+				<CourseFieldsForm />
 			</div>
 		</>
 	)

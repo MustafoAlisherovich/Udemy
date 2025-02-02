@@ -1,9 +1,9 @@
-import BlogCard from '@/components/cards/blog-card'
+import BlogCard from '@/components/cards/blog.card'
 import TopBar from '@/components/shared/top-bar'
 import { getBlogs } from '@/service/blogs.service'
 
-async function Blogs() {
-	const blogs = await getBlogs() 
+async function Page() {
+	const blogs = await getBlogs()
 
 	return (
 		<>
@@ -19,5 +19,4 @@ async function Blogs() {
 	)
 }
 
-export default Blogs
- 
+export default Page

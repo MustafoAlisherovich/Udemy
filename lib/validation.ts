@@ -1,4 +1,4 @@
-import {z} from 'zod'
+import { z } from 'zod'
 
 export const contactSchema = z.object({
 	message: z.string().min(10),
@@ -9,7 +9,7 @@ export const contactSchema = z.object({
 export const courseSchema = z.object({
 	title: z.string().min(3),
 	description: z.string().min(10),
-	studentWillLearn: z.string(),
+	learning: z.string(),
 	requirements: z.string(),
 	level: z.string(),
 	language: z.string(),

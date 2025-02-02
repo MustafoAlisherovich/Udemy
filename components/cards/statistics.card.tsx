@@ -7,7 +7,7 @@ interface Props {
 	Icon: LucideIcon | IconType
 }
 
-function StatisticsCard({Icon, label, value}: Props) {
+function StatisticsCard({ Icon, label, value }: Props) {
 	return (
 		<div className='flex items-center justify-between rounded-md bg-background p-4'>
 			<div className='flex flex-col space-y-2'>

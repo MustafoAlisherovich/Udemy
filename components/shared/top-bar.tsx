@@ -5,9 +5,9 @@ import { Dot } from 'lucide-react'
 import Link from 'next/link'
 
 interface Props {
-	description?: string
 	label: string
-	extra: string
+	description?: string
+	extra?: string
 }
 
 function TopBar({ label, extra, description }: Props) {
@@ -35,6 +35,7 @@ function TopBar({ label, extra, description }: Props) {
 					</div>
 				</div>
 			</div>
+
 			{description && (
 				<div className='container mx-auto my-12 max-w-6xl'>
 					<h1 className='font-space-grotesk text-4xl font-bold'>{t(label)}</h1>

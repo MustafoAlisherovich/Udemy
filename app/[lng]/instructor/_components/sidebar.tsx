@@ -16,7 +16,9 @@ function Sidebar() {
 						<Link key={item.route} href={item.route}>
 							<Button
 								className='flex w-full justify-start gap-2'
-								variant={pathname.slice(3) === item.route ? "secondary" : 'ghost'}
+								variant={
+									pathname.slice(3) === item.route ? 'secondary' : 'ghost'
+								}
 							>
 								<item.icon className='size-5 text-muted-foreground' />
 								<span>{item.label}</span>

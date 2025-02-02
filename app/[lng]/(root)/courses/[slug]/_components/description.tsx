@@ -2,7 +2,13 @@
 
 import { Button } from '@/components/ui/button'
 import useTranslate from '@/hooks/use-translate'
-import { BarChart2, Clock, Infinity, Languages, MonitorPlay } from 'lucide-react'
+import {
+	BarChart2,
+	Clock,
+	Infinity,
+	Languages,
+	MonitorPlay,
+} from 'lucide-react'
 import { GrCertificate } from 'react-icons/gr'
 
 function Description() {
@@ -25,7 +31,7 @@ function Description() {
 			<p className='my-3 text-center text-sm text-muted-foreground'>
 				{t('guarantee')}
 			</p>
-			
+
 			<div className='mt-4 flex items-center justify-between border-b pb-2'>
 				<div className='flex items-center gap-2 font-space-grotesk'>
 					<MonitorPlay className='size-5' />

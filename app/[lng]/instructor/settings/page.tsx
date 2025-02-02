@@ -1,10 +1,12 @@
+'use client'
+
 import { UserProfile } from '@clerk/nextjs'
 import Header from '../_components/header'
 import { useTheme } from 'next-themes'
-import {dark} from '@clerk/themes'
+import { dark } from '@clerk/themes'
 
 function Page() {
-	const {resolvedTheme} = useTheme()
+	const { resolvedTheme } = useTheme()
 
 	return (
 		<>

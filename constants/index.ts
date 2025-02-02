@@ -1,5 +1,16 @@
-import { Contact, FileCode, GaugeCircle, Home, ListVideo, MessageSquareMore, MonitorPlay, Rss, Settings2 } from 'lucide-react'
-import {	DiCisco,
+import {
+	Contact,
+	FileCode,
+	GaugeCircle,
+	Home,
+	ListVideo,
+	MessageSquareMore,
+	MonitorPlay,
+	Rss,
+	Settings2,
+} from 'lucide-react'
+import {
+	DiCisco,
 	DiCreativecommonsBadge,
 	DiDjango,
 	DiDocker,
@@ -11,7 +22,8 @@ import {	DiCisco,
 	DiNetmagazine,
 	DiNginx,
 	DiStylus,
-	DiYahoo,} from 'react-icons/di'
+	DiYahoo,
+} from 'react-icons/di'
 
 export const navLinks = [
 	{ route: '', name: 'navLink1', icon: Home },
@@ -64,7 +76,7 @@ export const courses = [
 			'https://www.sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2Ffa42d36e-0e79-4d72-806e-2884d9550590-uiysmj.png&w=1200&q=75',
 		author: {
 			image:
-				'/assets/author/chris-impey.jpg',
+				'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 			name: 'Chris Impley',
 		},
 		oldPrice: 179,
@@ -77,7 +89,7 @@ export const courses = [
 			'https://www.sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2F28bb5b4e-fcd5-4efe-9dfc-ecedc7be17ba-yxqcfn.png&w=1200&q=75',
 		author: {
 			image:
-				'/assets/author/chris-impey.jpg',
+				'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 			name: 'Chris Impley',
 		},
 		oldPrice: 159,
@@ -90,7 +102,7 @@ export const courses = [
 			'https://www.sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2FmMbSyFqocdYGuy6elWw32ShZLOavzytcQulCmd8ogs7R0e4K&w=1200&q=75',
 		author: {
 			image:
-				'/assets/author/chris-impey.jpg',
+				'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 			name: 'Chris Impley',
 		},
 		oldPrice: 129,
@@ -100,10 +112,10 @@ export const courses = [
 	{
 		title: 'Telegram BOT',
 		previewImage:
-			'https://www.sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2Fcee8c824-e21a-4a79-94df-b2374e2bc745-uiysne.png&w=1200&q=75',
+			'https://sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2F1662922d-b61d-401b-aa1a-693a6231d8a0-kilw9a.png&w=1920&q=75',
 		author: {
 			image:
-				'/assets/author/chris-impey.jpg',
+				'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 			name: 'Chris Impley',
 		},
 		oldPrice: 209,
@@ -113,10 +125,10 @@ export const courses = [
 	{
 		title: 'React Native',
 		previewImage:
-			'https://www.sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2FmMbSyFqocdYGT1SyIxvPE0URoA1nO7y5qbiGeaDgw8XvVNZF&w=1200&q=75',
+			'https://sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2F27f17594-ae28-4fe1-86ce-964a5c89c78d-kilw7k.png&w=1920&q=75',
 		author: {
 			image:
-				'/assets/author/chris-impey.jpg',
+				'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 			name: 'Chris Impley',
 		},
 		oldPrice: 129,
@@ -126,10 +138,10 @@ export const courses = [
 	{
 		title: 'Foundation',
 		previewImage:
-			'https://www.sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2FmMbSyFqocdYGoyWHUeXA7npSGrhZX9NcIHO3JgUjB16z02ER&w=1200&q=75',
+			'https://sammi.ac/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2Fbcdfb541-3300-430f-b8b2-ff0fb57df056-kilw6p.png&w=1920&q=75',
 		author: {
 			image:
-				'/assets/author/chris-impey.jpg',
+				'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 			name: 'Chris Impley',
 		},
 		oldPrice: 209,
@@ -159,19 +171,19 @@ export const instructors = [
 	{
 		name: 'Chris Impley',
 		image:
-			'/assets/author/chris-impey.jpg',
+			'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FKmuGvX9oRjYkG3bzttvc&w=1920&q=75',
 		job: 'Web Developer',
 	},
 	{
 		name: 'Thomas Winter',
 		image:
-			'/assets/author/thomas-winter.jpg',
+			'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FdT22spgATpzG10VG3TSA&w=3840&q=75',
 		job: 'Photographer',
 	},
 	{
 		name: 'Emma Watson',
 		image:
-			'/assets/author/emma-watson.jpg',
+			'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FmhvJXIm9QuykyIp3bm4Q&w=3840&q=75',
 		job: 'Digital Marketer',
 	},
 	{

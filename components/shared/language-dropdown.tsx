@@ -21,7 +21,7 @@ interface Props {
 
 function LanguageDropdown({ isMobile = false }: Props) {
 	const { lng } = useParams()
-	const pathname = usePathname()
+	const pathanme = usePathname()
 
 	return (
 		<DropdownMenu>
@@ -34,13 +34,17 @@ function LanguageDropdown({ isMobile = false }: Props) {
 					)}
 				>
 					<Languages />
-					{isMobile && <span className='ml-2 font-space-grotesk font-medium'>{getCurrentLng(lng as string)}</span>}
+					{isMobile && (
+						<span className='ml-2 font-space-grotesk font-medium'>
+							{getCurrentLng(lng as string)}
+						</span>
+					)}
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className='w-56'>
 				<DropdownMenuGroup>
 					{lngs.map(item => (
-						<Link key={item.route} href={`/${item.route}/${pathname.slice(4)}`}>
+						<Link key={item.route} href={`/${item.route}/${pathanme.slice(4)}`}>
 							<DropdownMenuItem
 								className={cn(
 									'cursor-pointer',

@@ -6,7 +6,7 @@ import { Separator } from '../ui/separator'
 
 function CourseCard(course: ICourse) {
 	return (
-		<Link href={'courses/reactjs'}>
+		<Link href={'/courses/reactjs'}>
 			<Card className='group w-full'>
 				<CardContent className='relative h-56 w-full'>
 					<Image
@@ -36,16 +36,16 @@ function CourseCard(course: ICourse) {
 						</div>
 
 						<div className='flex gap-2'>
-							<div className='font-space-grotesk self-start text-xs text-muted-foreground line-through'>
+							<div className='self-start font-space-grotesk text-xs text-muted-foreground line-through'>
 								{course.oldPrice.toLocaleString('en-US', {
 									style: 'currency',
 									currency: 'USD',
 								})}
 							</div>
-							<div className='font-space-grotesk self-start text-xs text-muted-foreground line-through'>
+							<div className='font-space-grotesk text-sm font-bold'>
 								{course.currentPrice.toLocaleString('en-US', {
-									style: 'currency',
 									currency: 'USD',
+									style: 'currency',
 								})}
 							</div>
 						</div>

@@ -7,10 +7,10 @@ function ReviewCard() {
 	return (
 		<div className='mt-6 border-t border-t-secondary'>
 			<div className='mt-8 flex gap-2'>
-			<Avatar>
+				<Avatar>
 					<AvatarImage
 						src={
-							'/assets/author/thomas-winter.jpg'
+							'https://blog.sammi.app/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2FmhvJXIm9QuykyIp3bm4Q&w=3840&q=75'
 						}
 					/>
 					<AvatarFallback className='uppercase'>SB</AvatarFallback>

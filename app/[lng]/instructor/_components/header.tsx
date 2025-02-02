@@ -3,12 +3,12 @@ interface Props {
 	description: string
 }
 
-function Header({title, description}: Props) {
+function Header({ description, title }: Props) {
 	return (
 		<div className='pt-4'>
-		<h1 className='font-space-grotesk text-4xl font-bold'>{title}</h1>
-		<p className='text-sm font-medium text-muted-foreground'>{description}</p>
-	</div>
+			<h1 className='font-space-grotesk text-4xl font-bold'>{title}</h1>
+			<p className='text-sm font-medium text-muted-foreground'>{description}</p>
+		</div>
 	)
 }
 

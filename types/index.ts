@@ -31,23 +31,6 @@ export interface IInstructor {
 	job: string
 }
 
-export interface ICategory {
-	label: string
-	icon: string
-}
-
-export interface IInstructor {
-	name: string
-	image: string
-	job: string
-}
-
-export interface IJourney {
-	title: string
-	image: string
-	excerpt: string
-}
-
 export interface IAuthor {
 	name: string
 	image: { url: string }

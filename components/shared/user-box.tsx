@@ -6,9 +6,9 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
-	DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
+import { Avatar, AvatarImage } from '../ui/avatar'
 import Link from 'next/link'
 import useTranslate from '@/hooks/use-translate'
 
@@ -36,13 +36,13 @@ function UserBox() {
 
 					<div className='flex items-center gap-x-2'>
 						<div className='rounded-md bg-secondary p-1'>
-							<Avatar>
+							<Avatar className='size-8'>
 								<AvatarImage src={user?.imageUrl} />
 							</Avatar>
 						</div>
 
 						<div className='space-y-1'>
-							<p className='line-clamp-1 text-sm font-space-grotesk'>
+							<p className='line-clamp-1 font-space-grotesk text-sm'>
 								{user?.fullName}
 							</p>
 						</div>

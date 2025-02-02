@@ -1,6 +1,6 @@
 'use client'
 
-import ReviewCard from '@/components/cards/review-card'
+import ReviewCard from '@/components/cards/review.card'
 import {
 	Accordion,
 	AccordionContent,
@@ -46,7 +46,7 @@ function Overview() {
 
 				<div className='mt-2 flex flex-row flex-wrap gap-8'>
 					<div className='flex flex-col'>
-						<ListOrdered className='size-10' />
+						<ListOrdered className='size-10 ' />
 						<p className='font-space-grotesk text-xl font-bold'>
 							{t('numberOfModules')}
 						</p>
@@ -90,17 +90,17 @@ function Overview() {
 				</h2>
 
 				<div className='mt-2'>
-					{forWhom.split(', ').map(item => (
-						<div className='mt-1 flex items-center' key={item}>
+					{forWhom.split(', ').map(i => (
+						<div className='mt-1 flex items-center' key={i}>
 							<Dot />
-							<p className='flex-1 text-slate-400'>{item}</p>
+							<p className='flex-1 text-slate-400'>{i}</p>
 						</div>
 					))}
 				</div>
 			</div>
 
-			<div className='mt-8 flex flex-col gap-8 pb-20'>
-			<div className='mt-6 flex items-center gap-1 font-space-grotesk text-xl'>
+			<div className='mt-8 flex flex-col pb-20'>
+				<div className='mt-6 flex items-center gap-1 font-space-grotesk text-xl'>
 					<Star className='fill-[#DD6B20] text-[#DD6B20]' />
 					<div className='font-medium'>
 						{t('reviewCourse')}: <span className='font-bold'>4.5</span>
@@ -121,6 +121,7 @@ function Overview() {
 
 				<Button
 					size={'lg'}
+					rounded={'full'}
 					className='mx-auto mt-6 flex justify-center'
 				>
 					{t('viewAll')}
