@@ -12,9 +12,9 @@ export const createUser = async (data: ICreateUser) => {
 
 		if (isExist) {
 			const updatedUser = await User.findOneAndUpdate(
-				{email},
+				{ email },
 				{ fullName, picture, clerkId },
-				{new: true}
+				{ new: true }
 			)
 
 			return updatedUser
@@ -31,11 +31,11 @@ export const createUser = async (data: ICreateUser) => {
 export const updateUser = async (data: IUpdateUser) => {
 	try {
 		await connectToDatabase()
-		const {clerkId, updatedData} = data
-		const updatedUser = await User.findOneAndUpdate( {clerkId}, updatedData, {
-			new: true
+		const { clerkId, updatedData } = data
+		const updateduser = await User.findOneAndUpdate({ clerkId }, updatedData, {
+			new: true,
 		})
-		return updateUser
+		return updateduser
 	} catch (error) {
 		throw new Error('Error updating user. Please try again.')
 	}

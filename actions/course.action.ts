@@ -12,7 +12,7 @@ export const createCourse = async (data: ICreateCourse) => {
 		await Course.create(data)
 		revalidatePath('/en/instructor/my-courses')
 	} catch (error) {
-		throw new Error('Something went wrong while creating course!')
+		throw new Error('Soething went wrong while creating course!')
 	}
 }
 
@@ -23,29 +23,5 @@ export const getCourses = async () => {
 		return courses as ICourse[]
 	} catch (error) {
 		throw new Error('Soething went wrong while getting course!')
-	}
-}
-
-export const getCourseById = async (id: string) => {
-	try {
-		await connectToDatabase()
-		const course = await Course.findById(id)
-		return course as ICourse
-	} catch (error) {
-		throw new Error('Something went wrong while getting course!')
-	}
-}
-
-export const updateStatusCourse = async (
-	id: string,
-	status: boolean,
-	path: string
-) => {
-	try {
-		await connectToDatabase()
-		await Course.findByIdAndUpdate(id, {published: status})
-		revalidatePath(path)
-	} catch (error) {
-		throw new Error('Something went wrong while updating course status!')
 	}
 }

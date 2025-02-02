@@ -17,7 +17,6 @@ export interface ICreateUser {
 	email: string
 	picture: string
 }
-
 export interface IUpdateUser {
 	clerkId: string
 	updatedData: {
