@@ -1,26 +1,24 @@
-import { authMiddleware } from "@clerk/nextjs";
-import createMiddleware from "next-intl/middleware";
+import { authMiddleware } from '@clerk/nextjs'
+import createMiddleware from 'next-intl/middleware'
 
 const intlMiddleware = createMiddleware({
-  locales: ["en", "ru", "uz", "tr"],
-  defaultLocale: "en",
-});
+	locales: ['en', 'ru', 'uz', 'tr'],
+	defaultLocale: 'en',
+})
 
 export default authMiddleware({
-  beforeAuth: (req) => {
-    return intlMiddleware(req);
-  },
-  publicRoutes: [
-    "/:lng",
-    "/:lng/courses",
-    "/:lng/courses/:slug",
-    "/:lng/blogs",
-    "/:lng/blogs/:slug",
-    "/:lng/contacts",
-  ],
-  ignoredRoutes: ["/en/api/webhook"]
-});
+	beforeAuth: req => intlMiddleware(req),
+	publicRoutes: [
+		'/:lng',
+		'/:lng/courses',
+		'/:lng/courses/:slug',
+		'/:lng/blogs',
+		'/:lng/blogs/:slug',
+		'/:lng/contacts',
+	],
+	ignoredRoutes: ['/en/api/webhook'],
+})
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-};
+	matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+}
