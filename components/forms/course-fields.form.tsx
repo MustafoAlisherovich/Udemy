@@ -34,6 +34,7 @@ import {
 	Dialog,
 	DialogContent
 } from '../ui/dialog'
+import { useUser } from '@clerk/nextjs'
 
 function CourseFieldsForm() {
 	const [isLoading, setIsLoading] = useState(false)
@@ -42,6 +43,7 @@ function CourseFieldsForm() {
 	const [open, setOpen] = useState(false)
 
 	const router = useRouter()
+	const {user} = useUser()
 
 	const { startUpload } = useUploadThing('imageUploader')
 
@@ -84,7 +86,7 @@ function CourseFieldsForm() {
 			oldPrice: +values.oldPrice,
 			currentPrice: +values.currentPrice,
 			previewImage: imageUrl,
-		})
+		}, user?.id as string)
 		.then(() => {
 			form.reset()
 			router.push('/en/instructor/my-courses')
