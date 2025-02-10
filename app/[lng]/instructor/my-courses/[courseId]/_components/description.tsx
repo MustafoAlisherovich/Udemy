@@ -5,17 +5,12 @@ import { ICourse } from '@/app.types'
 import FillLoading from '@/components/shared/fill-loading'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormMessage,
-} from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
 import UseToggleEdit from '@/hooks/use-toggle-edit'
-import { CourseFieldsSchema } from '@/lib/validation'
+import { descriptionSchema } from '@/lib/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Edit2, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
@@ -24,46 +19,35 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-function CourseFields(course: ICourse) {
-	const {onToggle, state} = UseToggleEdit()
+function Description(course: ICourse) {
+	const { onToggle, state } = UseToggleEdit()
 
 	return (
 		<Card>
 			<CardContent className='relative p-6'>
 				<div className='flex items-center justify-between'>
-					<span className='text-lg font-medium'>Course Title</span>
+					<span className='text-lg font-medium'>Description</span>
 					<Button size={'icon'} variant={'ghost'} onClick={onToggle}>
 						{state ? <X /> : <Edit2 />}
 					</Button>
 				</div>
 				<Separator className='my-3' />
 
-				{state ? (
-					<Forms course={course} onToggle={onToggle} />
-				) : (
-					<div className='flex flex-col space-y-2'>
-						<div className='flex items-center gap-2'>
-							<span className='font-space-grotesk font-bold text-muted-foreground'>
-								Title:
-							</span>
-							<span className='font-bold'>{course.title}</span>
-						</div>
-						<div className='flex items-center gap-2'>
-							<span className='font-space-grotesk font-bold text-muted-foreground'>
-								Slug:
-							</span>
-							<span className='font-bold'>
-								{course.slug ?? 'Not Configured'}
-							</span>
-						</div>
-					</div>
-				)}
+				{state ? <Forms course={course} onToggle={onToggle} /> : 
+				<div className='flex items-center gap-2'>
+						<span className='self-start font-space-grotesk font-bold text-muted-foreground'>
+							Description:
+						</span>
+						<span className='line-clamp-3 font-medium'>
+							{course.description}
+						</span>
+					</div>}
 			</CardContent>
 		</Card>
 	)
 }
 
-export default CourseFields
+export default Description
 
 interface FormsProps {
 	course: ICourse
@@ -75,15 +59,14 @@ function Forms({ course, onToggle }: FormsProps) {
 
 	const pathname = usePathname()
 
-	const form = useForm<z.infer<typeof CourseFieldsSchema>>({
-		resolver: zodResolver(CourseFieldsSchema),
+	const form = useForm<z.infer<typeof descriptionSchema>>({
+		resolver: zodResolver(descriptionSchema),
 		defaultValues: {
-			title: course.title,
-			slug: course.slug,
+			description: course.description
 		},
 	})
 
-	const onSubmit = (values: z.infer<typeof CourseFieldsSchema>) => {
+	const onSubmit = (values: z.infer<typeof descriptionSchema>) => {
 		setIsLoading(true)
 
 		const promise = updateCourse(course._id, values, pathname)
@@ -104,23 +87,11 @@ function Forms({ course, onToggle }: FormsProps) {
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-3'>
 					<FormField
 						control={form.control}
-						name='title'
+						name='description'
 						render={({ field }) => (
 							<FormItem>
 								<FormControl>
-									<Input disabled={isLoading} {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name='slug'
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input disabled={isLoading} {...field} />
+									<Textarea disabled={isLoading} {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

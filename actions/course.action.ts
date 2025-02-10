@@ -39,14 +39,14 @@ export const getCourseById = async (id: string) => {
 	}
 }
 
-export const updateStatusCourse = async (
+export const updateCourse = async (
 	id: string,
-	status: boolean,
+	updateData: Partial<ICourse>,
 	path: string
 ) => {
 	try {
 		await connectToDatabase()
-		await Course.findByIdAndUpdate(id, { published: status })
+		await Course.findByIdAndUpdate(id, updateData )
 		revalidatePath(path)
 	} catch (error) {
 		throw new Error('Something went wrong while updating course status!')
@@ -62,3 +62,5 @@ export const deleteCourse = async (id: string, path: string) => {
 		throw new Error('Something went wrong while deleting course!')
 	}
 }
+
+ 
