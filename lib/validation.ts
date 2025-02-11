@@ -44,6 +44,6 @@ export const priceSchema = z.object({
 	currentPrice: z.string(),
 })
 
-export const previewImageSchema = z.object({
-
+export const sectionSchema = z.object({
+	title: z.string().min(3),
 })
