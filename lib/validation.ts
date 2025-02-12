@@ -1,3 +1,4 @@
+import { min } from 'date-fns'
 import { z } from 'zod'
 
 export const contactSchema = z.object({
@@ -46,4 +47,13 @@ export const priceSchema = z.object({
 
 export const sectionSchema = z.object({
 	title: z.string().min(3),
+})
+
+export const LessonSchema = z.object({
+	title: z.string().min(3),
+	videoUrl: z.string().url(),
+	content: z.string(),
+	hours: z.string(),
+	minutes: z.string(),
+	seconds: z.string(),
 })
