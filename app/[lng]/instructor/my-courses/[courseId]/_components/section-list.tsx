@@ -2,7 +2,7 @@
 
 import { ISection } from '@/app.types'
 import { Draggable } from '@hello-pangea/dnd'
-import { Grip, Pencil, Trash2 } from 'lucide-react'
+import { Grip, Pencil } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
