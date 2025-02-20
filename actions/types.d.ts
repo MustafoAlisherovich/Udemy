@@ -27,7 +27,7 @@ export interface IUpdateUser {
 }
 
 export interface IUpdateSection {
-	lists: {_id: string; position: number}[]
+	lists: { _id: string; position: number }[]
 	path: string
 }
 
@@ -48,6 +48,12 @@ export interface ICreateLesson {
 }
 
 export interface IUpdatePosition {
-	lists: {_id: string; position: number}[]
+	lists: { _id: string; position: number }[]
 	path: string
+}
+
+export interface GetCoursesParams {
+	clerkId: string
+	page?: number
+	pageSize?: number
 }

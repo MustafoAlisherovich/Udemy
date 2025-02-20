@@ -35,3 +35,7 @@ export interface ILesson {
 		seconds: number
 	}
 }
+
+export interface SearchParamsProps {
+	searchParams: { [key: string]: string | undefined }
+}

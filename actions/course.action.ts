@@ -1,11 +1,11 @@
 'use server'
 
-import Course from '@/database/course.model'
-import { connectToDatabase } from '@/lib/mongoose'
-import { ICreateCourse } from './types'
 import { ICourse } from '@/app.types'
-import { revalidatePath } from 'next/cache'
+import Course from '@/database/course.model'
 import User from '@/database/user.model'
+import { connectToDatabase } from '@/lib/mongoose'
+import { revalidatePath } from 'next/cache'
+import { GetCoursesParams, ICreateCourse } from './types'
 
 export const createCourse = async (data: ICreateCourse, clerkId: string) => {
 	try {
@@ -18,12 +18,23 @@ export const createCourse = async (data: ICreateCourse, clerkId: string) => {
 	}
 }
 
-export const getCourses = async (clerkId: string) => {
+export const getCourses = async (params: GetCoursesParams) => {
 	try {
 		await connectToDatabase()
-		const user = await User.findOne({clerkId})
-		const courses = await Course.find({ instructor: user._id })
-		return courses as ICourse[]
+		const { clerkId, page = 1, pageSize = 3 } = params
+
+		const skipAmount = (page - 1) * pageSize
+
+		const user = await User.findOne({ clerkId })
+		const { _id } = user
+		const courses = await Course.find({ instructor: _id })
+			.skip(skipAmount)
+			.limit(pageSize)
+
+		const totalCourses = await Course.find({ instructor: _id }).countDocuments()
+		const isNext = totalCourses > skipAmount + courses.length
+
+		return { courses, isNext, totalCourses }
 	} catch (error) {
 		throw new Error('Soething went wrong while getting course!')
 	}
@@ -46,7 +57,7 @@ export const updateCourse = async (
 ) => {
 	try {
 		await connectToDatabase()
-		await Course.findByIdAndUpdate(id, updateData )
+		await Course.findByIdAndUpdate(id, updateData)
 		revalidatePath(path)
 	} catch (error) {
 		throw new Error('Something went wrong while updating course status!')
@@ -62,5 +73,3 @@ export const deleteCourse = async (id: string, path: string) => {
 		throw new Error('Something went wrong while deleting course!')
 	}
 }
-
- 
