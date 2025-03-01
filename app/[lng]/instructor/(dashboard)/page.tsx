@@ -1,23 +1,27 @@
-import StatisticsCard from '@/components/cards/statistics.card'
-import Header from '../_components/header'
-import { MonitorPlay } from 'lucide-react'
-import { PiStudent } from 'react-icons/pi'
-import { GrMoney } from 'react-icons/gr'
+import { getCourses } from '@/actions/course.action'
 import InstructorCourseCard from '@/components/cards/instructor-course.card'
 import ReviewCard from '@/components/cards/review.card'
-import { getCourses } from '@/actions/course.action'
+import StatisticsCard from '@/components/cards/statistics.card'
 import { auth } from '@clerk/nextjs'
+import { MonitorPlay } from 'lucide-react'
+import { GrMoney } from 'react-icons/gr'
+import { PiStudent } from 'react-icons/pi'
+import Header from '../_components/header'
 
 async function Page() {
-	const {userId} = auth()
-	const courses = await getCourses(userId as string)
+	const { userId } = auth()
+	const result = await getCourses({ clerkId: userId! })
 
 	return (
 		<>
 			<Header title='Dashboard' description='Welcome to your dashboard' />
 
 			<div className='mt-4 grid grid-cols-3 gap-4'>
-				<StatisticsCard label='Total courses' value='4' Icon={MonitorPlay} />
+				<StatisticsCard
+					label='Total courses'
+					value={result.totalCourses.toString()}
+					Icon={MonitorPlay}
+				/>
 				<StatisticsCard
 					label='Total students'
 					value='11.000'
@@ -32,9 +36,12 @@ async function Page() {
 			/>
 
 			<div className='mt-4 grid grid-cols-3 gap-4'>
-				{courses
+				{result.courses
 					.map(courses => (
-						<InstructorCourseCard key={courses._id} course={JSON.parse(JSON.stringify(courses))} />
+						<InstructorCourseCard
+							key={courses.title}
+							course={JSON.parse(JSON.stringify(courses))}
+						/>
 					))
 					.slice(0, 3)}
 			</div>

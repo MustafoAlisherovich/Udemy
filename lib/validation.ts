@@ -24,19 +24,19 @@ export const CourseFieldsSchema = z.object({
 })
 
 export const descriptionSchema = z.object({
-	description: z.string().min(10)
+	description: z.string().min(10),
 })
 
 export const validationSchema = z.object({
 	learning: z.string(),
 	requirements: z.string(),
-	tags: z.string()
+	tags: z.string(),
 })
 
 export const selectFieldsSchema = z.object({
 	language: z.string(),
 	category: z.string(),
-	level: z.string()
+	level: z.string(),
 })
 
 export const priceSchema = z.object({
@@ -55,5 +55,15 @@ export const LessonSchema = z.object({
 	hours: z.string(),
 	minutes: z.string(),
 	seconds: z.string(),
-	free: z.boolean().optional()
+	free: z.boolean().optional(),
+})
+
+export const profileSchema = z.object({
+	bio: z.string().min(10).optional(),
+	phone: z.string().optional(),
+	job: z.string().min(3).optional(),
+	website: z.string().url().optional(),
+	linkedin: z.string().url().optional(),
+	github: z.string().url().optional(),
+	youtube: z.string().url().optional(),
 })
