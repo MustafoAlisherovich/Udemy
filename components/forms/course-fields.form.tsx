@@ -1,9 +1,20 @@
 'use client'
 
+import { createCourse } from '@/actions/course.action'
+import { courseCategory, courseLanguage, courseLevels } from '@/constants'
+import { useUploadThing } from '@/lib/uploadthing'
 import { courseSchema } from '@/lib/validation'
+import { useUser } from '@clerk/nextjs'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ImageDown } from 'lucide-react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { ChangeEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
+import { Button } from '../ui/button'
+import { Dialog, DialogContent } from '../ui/dialog'
 import {
 	Form,
 	FormControl,
@@ -13,7 +24,6 @@ import {
 	FormMessage,
 } from '../ui/form'
 import { Input } from '../ui/input'
-import { Textarea } from '../ui/textarea'
 import {
 	Select,
 	SelectContent,
@@ -21,20 +31,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '../ui/select'
-import { courseCategory, courseLanguage, courseLevels } from '@/constants'
-import { Button } from '../ui/button'
-import { createCourse } from '@/actions/course.action'
-import { toast } from 'sonner'
-import { ChangeEvent, useState } from 'react'
-import { ImageDown } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { useUploadThing } from '@/lib/uploadthing'
-import {
-	Dialog,
-	DialogContent
-} from '../ui/dialog'
-import { useUser } from '@clerk/nextjs'
+import { Textarea } from '../ui/textarea'
 
 function CourseFieldsForm() {
 	const [isLoading, setIsLoading] = useState(false)
@@ -43,7 +40,7 @@ function CourseFieldsForm() {
 	const [open, setOpen] = useState(false)
 
 	const router = useRouter()
-	const {user} = useUser()
+	const { user } = useUser()
 
 	const { startUpload } = useUploadThing('imageUploader')
 
@@ -81,16 +78,19 @@ function CourseFieldsForm() {
 			}
 		}
 
-		const promise = createCourse({
-			...values,
-			oldPrice: +values.oldPrice,
-			currentPrice: +values.currentPrice,
-			previewImage: imageUrl,
-		}, user?.id as string)
-		.then(() => {
-			form.reset()
-			router.push('/en/instructor/my-courses')
-		})
+		const promise = createCourse(
+			{
+				...values,
+				oldPrice: +values.oldPrice,
+				currentPrice: +values.currentPrice,
+				previewImage: imageUrl,
+			},
+			user?.id as string
+		)
+			.then(() => {
+				form.reset()
+				router.push('/en/instructor/my-courses')
+			})
 			.finally(() => setIsLoading(false))
 
 		toast.promise(promise, {

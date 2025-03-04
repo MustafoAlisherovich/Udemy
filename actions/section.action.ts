@@ -1,10 +1,10 @@
 'use server'
 
-import { connectToDatabase } from '@/lib/mongoose'
-import Section from '@/database/section.model'
-import { IUpdateSection } from './types'
-import { revalidatePath } from 'next/cache'
 import Lesson from '@/database/lesson.model'
+import Section from '@/database/section.model'
+import { connectToDatabase } from '@/lib/mongoose'
+import { revalidatePath } from 'next/cache'
+import { IUpdateSection } from './types'
 
 export const getSections = async (course: string) => {
 	try {
@@ -50,7 +50,6 @@ export const getSectionById = async (id: string) => {
 		return await Section.findById(id)
 	} catch (error) {
 		throw new Error('Something went wrong')
-		
 	}
 }
 
@@ -59,18 +58,40 @@ export const deleteSection = async (id: string, path: string) => {
 		await connectToDatabase()
 		await Section.findByIdAndDelete(id)
 		await Lesson.deleteMany({ section: id })
-		revalidatePath(path)	
+		revalidatePath(path)
 	} catch (error) {
 		throw new Error('Something went wrong')
 	}
 }
 
-export const updateSectionTitle = async (id: string, title: string, path:string) => {
+export const updateSectionTitle = async (
+	id: string,
+	title: string,
+	path: string
+) => {
 	try {
-		await connectToDatabase() 
+		await connectToDatabase()
 		await Section.findByIdAndUpdate(id, { title })
 		revalidatePath(path)
 	} catch (error) {
 		throw new Error('Something went wrong')
+	}
+}
+
+export const getCourseSections = async (id: string) => {
+	try {
+		await connectToDatabase()
+
+		const sections = await Section.find({ course: id })
+			.sort({ position: 1 })
+			.populate({
+				path: 'lessons',
+				options: { sort: { position: 1 } },
+				model: Lesson,
+			})
+
+		return JSON.parse(JSON.stringify(sections))
+	} catch (error) {
+		throw new Error('Something went wrong!')
 	}
 }
