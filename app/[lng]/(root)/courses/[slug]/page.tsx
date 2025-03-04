@@ -1,5 +1,14 @@
-import { getDetailedCourse } from '@/actions/course.action'
+import { getDetailedCourse, getFeaturedCourses } from '@/actions/course.action'
+import { ICourse } from '@/app.types'
+import CourseCard from '@/components/cards/course.card'
 import TopBar from '@/components/shared/top-bar'
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from '@/components/ui/carousel'
 import { Separator } from '@/components/ui/separator'
 import { translation } from '@/i18n/server'
 import Description from './_components/description'
@@ -17,6 +26,8 @@ async function Page({ params: { lng, slug } }: Props) {
 	const { t } = await translation(lng)
 
 	const courseJSON = await getDetailedCourse(slug)
+	const coursesJSON = await getFeaturedCourses()
+	const courses = JSON.parse(JSON.stringify(coursesJSON))
 
 	const course = JSON.parse(JSON.stringify(courseJSON))
 
@@ -41,9 +52,9 @@ async function Page({ params: { lng, slug } }: Props) {
 					{t('youMayLike')}
 				</h1>
 
-				{/* 	<Carousel opts={{ align: 'start' }} className='mt-6 w-full'>
+				<Carousel opts={{ align: 'start' }} className='mt-6 w-full'>
 					<CarouselContent className='w-full'>
-						{courses.map(course => (
+						{courses.map((course: ICourse) => (
 							<CarouselItem
 								key={course.title}
 								className='md:basis-1/2 lg:basis-1/3'
@@ -54,7 +65,7 @@ async function Page({ params: { lng, slug } }: Props) {
 					</CarouselContent>
 					<CarouselPrevious />
 					<CarouselNext />
-				</Carousel> */}
+				</Carousel>
 			</div>
 		</>
 	)
